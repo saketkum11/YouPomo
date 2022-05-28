@@ -1,10 +1,11 @@
 import "./App.css";
-import { Header } from "./Pages";
+import { Header, MyRoutes } from "./Pages";
 
 function App() {
   return (
     <div className="App">
       <Header />
+      <MyRoutes />
     </div>
   );
 }
