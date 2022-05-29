@@ -45,7 +45,7 @@ const Header = () => {
                   </Link>
 
                   <Link
-                    to="/"
+                    to="/dashboard"
                     className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
                     Dashboard
@@ -74,10 +74,10 @@ const Header = () => {
             </Link>
 
             <Link
-              to="/"
+              to="/dashboard"
               className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
             >
-              Stats
+              Dashboard
             </Link>
 
             <button className="flex justify-center items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500  block">

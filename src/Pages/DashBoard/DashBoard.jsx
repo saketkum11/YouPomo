@@ -1,7 +1,11 @@
+import { Tasks } from "../../Component/Tasks/Tasks";
+
 const Dashboard = () => {
   return (
     <>
-      <h1>This is Dashboard page.</h1>
+      <main className="m-auto w-10/12 mt-32">
+        <Tasks />
+      </main>
     </>
   );
 };

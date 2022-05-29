@@ -6,7 +6,7 @@ const MyRoutes = () => {
     <>
       <Routes>
         <Route path="/" element={<Timer />} />
-        <Route path="/dashnoard" element={<Dashboard />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/signup" element={<Timer />} />
         <Route path="/mock" element={<Mockman />} />
       </Routes>

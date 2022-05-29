@@ -3,10 +3,8 @@ import { Clock } from "../../Component/Clock/Clock";
 const Timer = () => {
   return (
     <>
-      <main className="container flex w-9/12 justify-center ">
-        <section className="bg-red-600 ">
-          <Clock />
-        </section>
+      <main className="m-auto w-10/12 mt-32">
+        <Clock />
       </main>
     </>
   );
