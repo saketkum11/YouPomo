@@ -7,3 +7,5 @@ export { Footer } from "../Component/Footer/Footer";
 export { Clock } from "../Component/Clock/Clock";
 export { Tasks } from "../Component/Tasks/Tasks";
 export { ModalTask } from "../Component/ModalTask/ModalTask";
+export { Login } from "../Pages/Auth/Login";
+export { Signup } from "../Pages/Auth/Signup";

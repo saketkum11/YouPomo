@@ -16,10 +16,10 @@ const Clock = () => {
           <div className="">
             <div className="my-3">
               <button className="bg-indigo-700 text-white px-5 py-2  mr-2">
-                <i class="fa-solid fa-play"></i> Start
+                <i className="fa-solid fa-play"></i> Start
               </button>
               <button className="bg-gray-300  px-5 py-2">
-                <i class="fa-solid fa-pause text-indigo-700 "></i> Pause
+                <i className="fa-solid fa-pause text-indigo-700 "></i> Pause
               </button>
             </div>
             <div className="">

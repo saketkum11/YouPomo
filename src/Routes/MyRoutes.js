@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { Dashboard, Timer } from "../Pages";
+import { Dashboard, Login, Signup, Timer } from "../Pages";
 import Mockman from "mockman-js";
 const MyRoutes = () => {
   return (
@@ -7,7 +7,8 @@ const MyRoutes = () => {
       <Routes>
         <Route path="/" element={<Timer />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/signup" element={<Timer />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="/mock" element={<Mockman />} />
       </Routes>
     </>
