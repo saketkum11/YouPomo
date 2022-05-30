@@ -1,4 +1,10 @@
+import { useTask } from "../../Context/Task-context/Task-context";
+import { ACTION_TYPE } from "../../Reducer/util";
+
 const ModalTask = ({ setModalTaskFlag }) => {
+  const { taskState, taskDispatch } = useTask();
+  const { taskData } = taskState;
+  const { title, tag, description, time } = taskData;
   return (
     <>
       <div
@@ -13,9 +19,15 @@ const ModalTask = ({ setModalTaskFlag }) => {
           <div className="flex  items-end sm:items-center justify-center min-h-full p-4 text-center sm:p-0">
             <div className="relative bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:max-w-lg sm:w-full">
               <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                <form className="">
+                <form onSubmit={() => {}}>
                   <div className="my-2 ">
                     <input
+                      onChange={(e) =>
+                        taskDispatch({
+                          type: ACTION_TYPE.ADD_TITLE,
+                          payload: e.target.value,
+                        })
+                      }
                       type="text"
                       required
                       placeholder="Add Title"
@@ -24,6 +36,12 @@ const ModalTask = ({ setModalTaskFlag }) => {
                   </div>
                   <div className="my-2">
                     <textarea
+                      onChange={(e) => {
+                        taskDispatch({
+                          type: ACTION_TYPE.ADD_DESCRIPTION,
+                          payload: e.target.value,
+                        });
+                      }}
                       type="text"
                       required
                       minLength="5"
@@ -33,6 +51,12 @@ const ModalTask = ({ setModalTaskFlag }) => {
                   </div>
                   <div className="my-2">
                     <select
+                      onChange={(e) => {
+                        taskDispatch({
+                          type: ACTION_TYPE.ADD_TAG,
+                          payload: e.target.value,
+                        });
+                      }}
                       type="text"
                       required
                       placeholder="Add Title"
@@ -49,6 +73,12 @@ const ModalTask = ({ setModalTaskFlag }) => {
                   </div>
                   <div className="my-2">
                     <input
+                      onChange={(e) => {
+                        taskDispatch({
+                          type: ACTION_TYPE.ADD_TIME,
+                          payload: e.target.value,
+                        });
+                      }}
                       required
                       type="number"
                       min="15"
@@ -58,22 +88,22 @@ const ModalTask = ({ setModalTaskFlag }) => {
                       className="bg-gray-100 w-full border-gray-300 px-2 h-10 "
                     />
                   </div>
+                  <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                    <button
+                      type="button"
+                      className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:ml-3 sm:w-auto sm:text-sm"
+                    >
+                      Create Task
+                    </button>
+                    <button
+                      onClick={() => setModalTaskFlag((flag) => !flag)}
+                      type="submit"
+                      className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+                    >
+                      Cancel
+                    </button>
+                  </div>
                 </form>
-              </div>
-              <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                <button
-                  type="button"
-                  className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:ml-3 sm:w-auto sm:text-sm"
-                >
-                  Create Task
-                </button>
-                <button
-                  onClick={() => setModalTaskFlag((flag) => !flag)}
-                  type="button"
-                  className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
-                >
-                  Cancel
-                </button>
               </div>
             </div>
           </div>
