@@ -1,4 +1,11 @@
+import { useEffect } from "react";
+import { useTask } from "../../Context/Task-context/Task-context";
+
 const Tasks = () => {
+  const { taskState, taskDispatch } = useTask();
+  const { task, tag } = taskState;
+  console.log("task", task, tag);
+
   return (
     <>
       <section className="grid col-start-1  border-8 p-4">
@@ -7,110 +14,38 @@ const Tasks = () => {
         </div>
         <div className=" flex  flex-wrap justify-start items-center">
           <span className="mr-2">All Tags :</span>
-          <button className="mr-3 bg-gray-900 text-white w-20 h-7 rounded-2xl my-3">
-            work
-          </button>
-          <button className="mr-3 bg-gray-900 text-white w-20 h-7 rounded-2xl my-3">
-            work
-          </button>
+          {tag.map((tags) => {
+            return (
+              <button
+                key={tags}
+                className="mr-3 bg-gray-900 text-white px-3 py-1 rounded-2xl my-3"
+              >
+                {tags}
+              </button>
+            );
+          })}
         </div>
         <aside className="flex flex-col h-full justify-between">
-          <div className="flex justify-between">
-            <div>
-              <button>
-                <i className="fa-solid fa-list-check"></i>
-              </button>
-              <span>intelligent</span>
-            </div>
-            <div>
-              <button>
-                <i className="fa-solid fa-pen-to-square"></i>
-              </button>
-              <button>
-                <i className="fa-solid fa-trash-can"></i>
-              </button>
-            </div>
-          </div>
-          <div className="flex justify-between">
-            <div>
-              <button>
-                <i className="fa-solid fa-list-check"></i>
-              </button>
-              <span>intelligent</span>
-            </div>
-            <div>
-              <button>
-                <i className="fa-solid fa-pen-to-square"></i>
-              </button>
-              <button>
-                <i className="fa-solid fa-trash-can"></i>
-              </button>
-            </div>
-          </div>
-          <div className="flex justify-between">
-            <div>
-              <button>
-                <i className="fa-solid fa-list-check"></i>
-              </button>
-              <span>intelligent</span>
-            </div>
-            <div>
-              <button>
-                <i className="fa-solid fa-pen-to-square"></i>
-              </button>
-              <button>
-                <i className="fa-solid fa-trash-can"></i>
-              </button>
-            </div>
-          </div>
-          <div className="flex justify-between">
-            <div>
-              <button>
-                <i className="fa-solid fa-list-check"></i>
-              </button>
-              <span>intelligent</span>
-            </div>
-            <div>
-              <button>
-                <i className="fa-solid fa-pen-to-square"></i>
-              </button>
-              <button>
-                <i className="fa-solid fa-trash-can"></i>
-              </button>
-            </div>
-          </div>
-          <div className="flex justify-between">
-            <div>
-              <button>
-                <i className="fa-solid fa-list-check"></i>
-              </button>
-              <span>intelligent</span>
-            </div>
-            <div>
-              <button>
-                <i className="fa-solid fa-pen-to-square"></i>
-              </button>
-              <button>
-                <i className="fa-solid fa-trash-can"></i>
-              </button>
-            </div>
-          </div>
-          <div className="flex justify-between">
-            <div>
-              <button>
-                <i className="fa-solid fa-list-check"></i>
-              </button>
-              <span>intelligent</span>
-            </div>
-            <div>
-              <button>
-                <i className="fa-solid fa-pen-to-square"></i>
-              </button>
-              <button>
-                <i className="fa-solid fa-trash-can"></i>
-              </button>
-            </div>
-          </div>
+          {task.map(({ title, _id }) => {
+            return (
+              <div className="flex justify-between" key={_id}>
+                <div>
+                  <button>
+                    <i className="fa-solid fa-list-check"></i>
+                  </button>
+                  <span>{title}</span>
+                </div>
+                <div>
+                  <button>
+                    <i className="fa-solid fa-pen-to-square"></i>
+                  </button>
+                  <button>
+                    <i className="fa-solid fa-trash-can"></i>
+                  </button>
+                </div>
+              </div>
+            );
+          })}
         </aside>
       </section>
     </>

@@ -2,25 +2,10 @@ import { ACTION_TYPE } from "./util";
 
 const taskReducer = (state, { type, payload }) => {
   switch (type) {
-    case ACTION_TYPE.ADD_TITLE:
+    case ACTION_TYPE.SUMBIT_TASK:
       return {
         ...state,
-        taskData: { ...state.taskData, title: payload },
-      };
-    case ACTION_TYPE.ADD_DESCRIPTION:
-      return {
-        ...state,
-        taskData: { ...state.taskData, description: payload },
-      };
-    case ACTION_TYPE.ADD_TAG:
-      return {
-        ...state,
-        taskData: { ...state.taskData, tag: payload },
-      };
-    case ACTION_TYPE.ADD_TIME:
-      return {
-        ...state,
-        taskData: { ...state.taskData, time: payload },
+        task: [...state.task, payload],
       };
     default:
       return state;
