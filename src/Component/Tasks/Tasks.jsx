@@ -1,10 +1,15 @@
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useTask } from "../../Context/Task-context/Task-context";
 
 const Tasks = () => {
-  const { taskState, taskDispatch } = useTask();
+  const { taskState } = useTask();
   const { task, tag } = taskState;
   console.log("task", task, tag);
+  const navigate = useNavigate();
+  const taskHandler = (task) => {
+    navigate("/");
+  };
 
   return (
     <>
@@ -33,7 +38,12 @@ const Tasks = () => {
                   <button>
                     <i className="fa-solid fa-list-check"></i>
                   </button>
-                  <span>{title}</span>
+                  <span
+                    onClick={() => taskHandler(task)}
+                    className="cursor-pointer ml-3 text-lg hover:text-pink-900"
+                  >
+                    {title}
+                  </span>
                 </div>
                 <div>
                   <button>
