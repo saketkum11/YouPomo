@@ -2,7 +2,11 @@ import { useState } from "react";
 import { useTask } from "../../Context/Task-context/Task-context";
 import { ACTION_TYPE } from "../../Reducer/util";
 import { v4 as uuid } from "uuid";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const ModalTask = ({ setModalTaskFlag }) => {
+  const notify = () => toast("Wow so easy !");
   const { taskDispatch } = useTask();
   const [taskDetails, setTaskDetails] = useState({
     _id: uuid(),
@@ -34,6 +38,7 @@ const ModalTask = ({ setModalTaskFlag }) => {
                       type: ACTION_TYPE.SUMBIT_TASK,
                       payload: taskDetails,
                     });
+                    notify();
                   }}
                 >
                   <div className="my-2 ">
@@ -127,6 +132,7 @@ const ModalTask = ({ setModalTaskFlag }) => {
           </div>
         </div>
       </div>
+      <ToastContainer autoClose={3000} />
     </>
   );
 };
