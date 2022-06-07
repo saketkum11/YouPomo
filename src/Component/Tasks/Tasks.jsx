@@ -5,8 +5,9 @@ import { useTask } from "../../Context/Task-context/Task-context";
 const Tasks = () => {
   const { taskState } = useTask();
   const { task, tag } = taskState;
-  console.log("task", task, tag);
+
   const navigate = useNavigate();
+
   const taskHandler = (task) => {
     navigate("/");
   };

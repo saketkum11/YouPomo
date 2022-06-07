@@ -4,9 +4,16 @@ import { ACTION_TYPE } from "../../Reducer/util";
 import { v4 as uuid } from "uuid";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 
 const ModalTask = ({ setModalTaskFlag }) => {
-  const notify = () => toast("Wow so easy !");
+  const [message, setMessage] = useState({
+    success: "successfully added",
+    warning: "error",
+  });
+
+  const notify = (msg) => toast.success(msg.success);
+  const navigate = useNavigate();
   const { taskDispatch } = useTask();
   const [taskDetails, setTaskDetails] = useState({
     _id: uuid(),
@@ -17,6 +24,7 @@ const ModalTask = ({ setModalTaskFlag }) => {
   });
 
   console.log("taskDestail from modalTask componet", taskDetails);
+
   return (
     <>
       <div
@@ -38,7 +46,8 @@ const ModalTask = ({ setModalTaskFlag }) => {
                       type: ACTION_TYPE.SUMBIT_TASK,
                       payload: taskDetails,
                     });
-                    notify();
+                    notify(message);
+                    navigate("/");
                   }}
                 >
                   <div className="my-2 ">
@@ -132,7 +141,7 @@ const ModalTask = ({ setModalTaskFlag }) => {
           </div>
         </div>
       </div>
-      <ToastContainer autoClose={3000} />
+      <ToastContainer autoClose={2000} />
     </>
   );
 };
