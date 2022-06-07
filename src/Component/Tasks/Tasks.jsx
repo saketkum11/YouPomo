@@ -1,16 +1,19 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTask } from "../../Context/Task-context/Task-context";
+import { Loader } from "../Loader/Loader";
 
 const Tasks = () => {
   const { taskState } = useTask();
   const { task, tag } = taskState;
-
+  const [isPending, setIsPending] = useState(true);
   const navigate = useNavigate();
 
   const taskHandler = (task) => {
     navigate("/");
   };
+
+  useEffect(() => {}, []);
 
   return (
     <>
@@ -31,6 +34,7 @@ const Tasks = () => {
             );
           })}
         </div>
+        {isPending && <Loader />}
         <aside className="flex flex-col h-full justify-between">
           {task.map(({ title, _id }) => {
             return (

@@ -4,7 +4,6 @@ import { ACTION_TYPE } from "../../Reducer/util";
 import { v4 as uuid } from "uuid";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useNavigate } from "react-router-dom";
 
 const ModalTask = ({ setModalTaskFlag }) => {
   const [message, setMessage] = useState({
@@ -13,7 +12,7 @@ const ModalTask = ({ setModalTaskFlag }) => {
   });
 
   const notify = (msg) => toast.success(msg.success);
-  const navigate = useNavigate();
+
   const { taskDispatch } = useTask();
   const [taskDetails, setTaskDetails] = useState({
     _id: uuid(),
@@ -47,7 +46,6 @@ const ModalTask = ({ setModalTaskFlag }) => {
                       payload: taskDetails,
                     });
                     notify(message);
-                    navigate("/");
                   }}
                 >
                   <div className="my-2 ">
