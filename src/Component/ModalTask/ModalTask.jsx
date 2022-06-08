@@ -2,8 +2,7 @@ import { useState } from "react";
 import { useTask } from "../../Context/Task-context/Task-context";
 import { ACTION_TYPE } from "../../Reducer/util";
 import { v4 as uuid } from "uuid";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+
 import { useNavigate } from "react-router-dom";
 
 const ModalTask = ({ setModalTaskFlag }) => {
@@ -47,7 +46,6 @@ const ModalTask = ({ setModalTaskFlag }) => {
                       payload: taskDetails,
                     });
                     notify(message);
-
                     setModalTaskFlag((flag) => !flag);
                   }}
                 >
@@ -142,7 +140,6 @@ const ModalTask = ({ setModalTaskFlag }) => {
           </div>
         </div>
       </div>
-      <ToastContainer autoClose={2000} />
     </>
   );
 };
