@@ -2,11 +2,18 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTask } from "../../Context/Task-context/Task-context";
 import { Loader } from "../Loader/Loader";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Tasks = () => {
   const { taskState } = useTask();
   const { task, tag } = taskState;
-  const [isPending, setIsPending] = useState(true);
+  const [message, setMessage] = useState({
+    success: "successfully added",
+    warning: "error",
+  });
+
+  const notify = (msg) => toast.success(msg.success);
   const navigate = useNavigate();
 
   const taskHandler = (task) => {
@@ -34,7 +41,6 @@ const Tasks = () => {
             );
           })}
         </div>
-        {isPending && <Loader />}
         <aside className="flex flex-col h-full justify-between">
           {task.map(({ title, _id }) => {
             return (
@@ -63,6 +69,7 @@ const Tasks = () => {
           })}
         </aside>
       </section>
+      <ToastContainer autoClose={2000} />
     </>
   );
 };
