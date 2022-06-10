@@ -5,7 +5,7 @@ const taskReducer = (state, { type, payload }) => {
     case ACTION_TYPE.SUMBIT_TASK:
       return {
         ...state,
-        task: [...state.task, payload],
+        tasks: [...state.tasks, payload],
       };
     default:
       return state;

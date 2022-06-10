@@ -6,8 +6,8 @@ const useTask = () => useContext(TaskContext);
 
 const TaskProvider = ({ children }) => {
   const initialState = {
-    task: [],
-    tag: ["Read Book", "Homework", "Drawing"],
+    tasks: [],
+    tags: ["Read Book", "Homework", "Drawing"],
   };
 
   const [taskState, taskDispatch] = useReducer(taskReducer, initialState);

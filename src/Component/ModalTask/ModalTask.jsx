@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { useTask } from "../../Context/Task-context/Task-context";
+import { useTask } from "../../Context/Task-context/Task-Context";
 import { ACTION_TYPE } from "../../Reducer/util";
 import { v4 as uuid } from "uuid";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 
 const ModalTask = ({ setModalTaskFlag }) => {
@@ -22,7 +23,19 @@ const ModalTask = ({ setModalTaskFlag }) => {
     time: "",
   });
 
-  console.log("taskDestail from modalTask componet", taskDetails);
+  const changeHandler = (event) => {
+    event.preventDefault();
+    taskDispatch({
+      type: ACTION_TYPE.SUMBIT_TASK,
+      payload: taskDetails,
+    });
+    notify(message);
+    setModalTaskFlag((flag) => !flag);
+  };
+
+  const taskHandler = (event) => {
+    setTaskDetails({ ...taskDetails, [event.target.name]: event.target.value });
+  };
 
   return (
     <>
@@ -40,25 +53,17 @@ const ModalTask = ({ setModalTaskFlag }) => {
               <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                 <form
                   onSubmit={(event) => {
-                    event.preventDefault();
-                    taskDispatch({
-                      type: ACTION_TYPE.SUMBIT_TASK,
-                      payload: taskDetails,
-                    });
-                    notify(message);
-                    setModalTaskFlag((flag) => !flag);
+                    changeHandler(event);
                   }}
                 >
                   <div className="my-2 ">
                     <input
                       onChange={(e) => {
-                        setTaskDetails({
-                          ...taskDetails,
-                          title: e.target.value,
-                        });
+                        taskHandler(e);
                       }}
                       type="text"
                       required
+                      name="title"
                       placeholder="Add Title"
                       className="bg-gray-100  w-full border-gray-300 py-3 px-2 "
                     />
@@ -66,13 +71,11 @@ const ModalTask = ({ setModalTaskFlag }) => {
                   <div className="my-2">
                     <textarea
                       onChange={(e) => {
-                        setTaskDetails({
-                          ...taskDetails,
-                          description: e.target.value,
-                        });
+                        taskHandler(e);
                       }}
                       type="text"
                       required
+                      name="description"
                       minLength="5"
                       placeholder="Add Description"
                       className="bg-gray-100 w-full border-gray-300 px-2 h-64 "
@@ -81,10 +84,7 @@ const ModalTask = ({ setModalTaskFlag }) => {
                   <div className="my-2">
                     <select
                       onChange={(e) => {
-                        setTaskDetails({
-                          ...taskDetails,
-                          tag: e.target.value,
-                        });
+                        taskHandler(e);
                       }}
                       type="text"
                       required
@@ -103,16 +103,14 @@ const ModalTask = ({ setModalTaskFlag }) => {
                   <div className="my-2">
                     <input
                       onChange={(e) => {
-                        setTaskDetails({
-                          ...taskDetails,
-                          time: e.target.value,
-                        });
+                        taskHandler(e);
                       }}
                       required
                       type="number"
                       min="15"
                       max="60"
                       step="5"
+                      name="time"
                       placeholder="Add Time"
                       className="bg-gray-100 w-full border-gray-300 px-2 h-10 "
                     />

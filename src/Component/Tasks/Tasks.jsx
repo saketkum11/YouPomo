@@ -1,20 +1,17 @@
-import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useTask } from "../../Context/Task-context/Task-context";
+import { useTask } from "../../Context/Task-context/Task-Context";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Tasks = () => {
   const { taskState } = useTask();
-  const { task, tag } = taskState;
+  const { tasks, tags } = taskState;
 
   const navigate = useNavigate();
 
   const taskHandler = (task) => {
     navigate("/");
   };
-
-  useEffect(() => {}, []);
 
   return (
     <>
@@ -24,19 +21,19 @@ const Tasks = () => {
         </div>
         <div className=" flex  flex-wrap justify-start items-center">
           <span className="mr-2">All Tags :</span>
-          {tag.map((tags) => {
+          {tags.map((tag) => {
             return (
               <button
-                key={tags}
+                key={tag}
                 className="mr-3 bg-gray-900 text-white px-3 py-1 rounded-2xl my-3"
               >
-                {tags}
+                {tag}
               </button>
             );
           })}
         </div>
         <aside className="flex flex-col h-full justify-between">
-          {task.map(({ title, _id }) => {
+          {tasks.map(({ title, _id }) => {
             return (
               <div className="flex justify-between" key={_id}>
                 <div>
@@ -44,7 +41,7 @@ const Tasks = () => {
                     <i className="fa-solid fa-list-check"></i>
                   </button>
                   <span
-                    onClick={() => taskHandler(task)}
+                    onClick={() => taskHandler(tasks)}
                     className="cursor-pointer ml-3 text-lg hover:text-pink-900"
                   >
                     {title}
