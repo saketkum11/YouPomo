@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import { makeServer } from "./server";
 import { BrowserRouter } from "react-router-dom";
-import { TaskProvider } from "./Context/Task-Context/Task-Context";
+import { TaskProvider } from "./Context/Task/Task-Context";
 
 // Call make Server
 makeServer();

@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useTask } from "../../Context/Task-Context/Task-Context";
+import { useTask } from "../../Context/Task/Task-Context";
 
 const Tasks = () => {
   const { taskState } = useTask();
