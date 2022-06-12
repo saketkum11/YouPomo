@@ -92,7 +92,7 @@ const ModalTask = ({ setModalTaskFlag }) => {
                       name="tag"
                       className="bg-gray-100 w-full border-gray-300 px-2 h-10 "
                     >
-                      <option value disabled>
+                      <option value defaultValue>
                         ---select tags --
                       </option>
                       <option value="readbook">Read Book</option>

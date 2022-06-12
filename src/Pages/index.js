@@ -4,7 +4,7 @@ export { MyRoutes } from "../Routes/MyRoutes";
 export { Timer } from "../Pages/Timer/Timer";
 export { Dashboard } from "../Pages/DashBoard/DashBoard";
 export { Footer } from "../Component/Footer/Footer";
-export { Clock } from "../Component/Clock/Clock";
+export { Pomodoro } from "../Component/Pomodoro/Pomodoro";
 export { Tasks } from "../Component/Tasks/Tasks";
 export { ModalTask } from "../Component/ModalTask/ModalTask";
 export { Login } from "../Pages/Auth/Login";

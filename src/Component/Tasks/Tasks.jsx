@@ -1,16 +1,18 @@
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { usePomo } from "../../Context/Pomodoro/Pomodoro-Context";
 import { useTask } from "../../Context/Task/Task-Context";
 
 const Tasks = () => {
   const { taskState } = useTask();
   const { tasks, tags } = taskState;
-
+  const { setPomodoroDetails } = usePomo();
   const navigate = useNavigate();
 
   const taskHandler = (task) => {
     navigate("/");
+    setPomodoroDetails(task);
   };
 
   return (
@@ -33,7 +35,8 @@ const Tasks = () => {
           })}
         </div>
         <aside className="flex flex-col h-full justify-between">
-          {tasks.map(({ title, _id }) => {
+          {tasks.map((task) => {
+            const { _id, title, description } = task;
             return (
               <div className="flex justify-between" key={_id}>
                 <div>
@@ -41,7 +44,7 @@ const Tasks = () => {
                     <i className="fa-solid fa-list-check"></i>
                   </button>
                   <span
-                    onClick={() => taskHandler(tasks)}
+                    onClick={() => taskHandler(task)}
                     className="cursor-pointer ml-3 text-lg hover:text-pink-900"
                   >
                     {title}
