@@ -102,7 +102,14 @@ const Header = () => {
             </Link>
           </div>
         </div>
-        {modalTaskFlag ? <ModalTask setModalTaskFlag={setModalTaskFlag} /> : ""}
+        {modalTaskFlag ? (
+          <ModalTask
+            setModalTaskFlag={setModalTaskFlag}
+            modalTaskFlag={modalTaskFlag}
+          />
+        ) : (
+          ""
+        )}
       </nav>
     </>
   );

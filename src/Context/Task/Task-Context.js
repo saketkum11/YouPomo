@@ -8,6 +8,7 @@ const TaskProvider = ({ children }) => {
   const initialState = {
     tasks: [],
     tags: ["Read Book", "Homework", "Drawing"],
+    editTask: false,
   };
   const [taskState, taskDispatch] = useReducer(taskReducer, initialState);
   console.log("initials state", taskState);

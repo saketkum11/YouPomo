@@ -1,12 +1,14 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { usePomo } from "../../Context/Pomodoro/Pomodoro-Context";
 import { useTask } from "../../Context/Task/Task-Context";
+import { ModalTask } from "../ModalTask/ModalTask";
 
 const Tasks = () => {
   const { taskState } = useTask();
-  const { tasks, tags } = taskState;
+  const { tasks, tags, editTask } = taskState;
   const { setPomodoroDetails } = usePomo();
   const navigate = useNavigate();
 
@@ -51,9 +53,15 @@ const Tasks = () => {
                   </span>
                 </div>
                 <div>
-                  <button>
+                  <button onClick={() => setUpdateFlag((flag) => !flag)}>
                     <i className="fa-solid fa-pen-to-square"></i>
                   </button>
+                  {updateFlag && (
+                    <ModalTask
+                      updateFlag={updateFlag}
+                      setUpdateFlag={setUpdateFlag}
+                    />
+                  )}
                   <button>
                     <i className="fa-solid fa-trash-can"></i>
                   </button>
