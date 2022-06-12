@@ -1,17 +1,40 @@
+import { useEffect, useState } from "react";
 import { usePomo } from "../../Context/Pomodoro/Pomodoro-Context";
+import { computeTime } from "../../servies/servies";
 
 const Pomodoro = () => {
   const { pomodoroDetails } = usePomo();
   const { title, tag, description, time } = pomodoroDetails;
+  const milisecond = 1000;
+  const [progressValue, setProgressValue] = useState(time * 60);
+
+  let { minutes, second } = computeTime(progressValue);
+
+  useEffect(() => {
+    let interval = setInterval(() => {
+      setProgressValue((value) => value - 1);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [progressValue]);
+
+  /* const startTimer = () => {
+    let interval = setInterval(() => {
+      setProgressValue((value) => value--);
+    }, 1000);
+    return () => clearInterval(interval);
+  };*/
+
   return (
     <>
       <section className="grid grid-cols-2 border-8 ">
         <section className="p-4 flex flex-col items-center my-10 justify-center ">
           <div className="h-72 w-72 bg-red-500 rounded-full border-8 flex flex-col justify-center ">
             <div className="flex justify-evenly items-center ">
-              <span className=" text-white font-bold text-3xl">15 m</span>
+              <span className=" text-white font-bold text-3xl">
+                {minutes} m
+              </span>
               <span className=" text-white font-bold text-3xl">:</span>
-              <span className=" text-white font-bold text-3xl">00 s</span>
+              <span className=" text-white font-bold text-3xl">{second} s</span>
             </div>
             <div className="mt-3">
               <p className=" text-white  ">Out of {time} min</p>

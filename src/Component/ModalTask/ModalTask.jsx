@@ -107,7 +107,7 @@ const ModalTask = ({ setModalTaskFlag }) => {
                       }}
                       required
                       type="number"
-                      min="15"
+                      min="5"
                       max="60"
                       step="5"
                       name="time"
