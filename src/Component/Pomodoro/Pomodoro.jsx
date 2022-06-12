@@ -7,22 +7,29 @@ const Pomodoro = () => {
   const { title, tag, description, time } = pomodoroDetails;
   const milisecond = 1000;
   const [progressValue, setProgressValue] = useState(time * 60);
-
+  const [timerFlag, setTimerFlag] = useState(false);
   let { minutes, second } = computeTime(progressValue);
 
   useEffect(() => {
-    let interval = setInterval(() => {
-      setProgressValue((value) => value - 1);
-    }, 1000);
-    return () => clearInterval(interval);
-  }, [progressValue]);
+    if (timerFlag && progressValue > 0) {
+      let interval = setInterval(() => {
+        setProgressValue((value) => value - 1);
+      }, milisecond);
+      return () => clearInterval(interval);
+    }
+  }, [progressValue, timerFlag]);
 
-  /* const startTimer = () => {
-    let interval = setInterval(() => {
-      setProgressValue((value) => value--);
-    }, 1000);
-    return () => clearInterval(interval);
-  };*/
+  const pauseTimer = () => {
+    setTimerFlag((flag) => !flag);
+  };
+
+  const startTimer = () => {
+    setTimerFlag((flag) => !flag);
+  };
+  const resetTimer = () => {
+    setProgressValue(time * 60);
+    setTimerFlag(false);
+  };
 
   return (
     <>
@@ -42,15 +49,27 @@ const Pomodoro = () => {
           </div>
           <div className="">
             <div className="my-3">
-              <button className="bg-indigo-700 text-white px-5 py-2  mr-2">
-                <i className="fa-solid fa-play"></i> Start
-              </button>
-              <button className="bg-gray-300  px-5 py-2">
-                <i className="fa-solid fa-pause text-indigo-700 "></i> Pause
-              </button>
+              {timerFlag ? (
+                <button
+                  onClick={() => pauseTimer()}
+                  className="bg-gray-300  px-5 py-2"
+                >
+                  <i className="fa-solid fa-pause text-indigo-700 "></i> Pause
+                </button>
+              ) : (
+                <button
+                  onClick={() => startTimer()}
+                  className="bg-indigo-700 text-white px-5 py-2  mr-2"
+                >
+                  <i className="fa-solid fa-play"></i> Start
+                </button>
+              )}
             </div>
             <div className="">
-              <button className="bg-yellow-200 w-full text-bold text-lg text-white px-5 py-2">
+              <button
+                onClick={() => resetTimer()}
+                className="bg-yellow-200 w-full text-bold text-lg text-white px-5 py-2"
+              >
                 Reset
               </button>
             </div>
