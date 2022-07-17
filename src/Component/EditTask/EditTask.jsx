@@ -1,41 +1,18 @@
 import { useState } from "react";
 import { ACTION_TYPE } from "../../Reducer/util";
-import { v4 as uuid } from "uuid";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import { useTask } from "../../Context/Task/Task-Context";
 
-const ModalTask = ({ setModalTaskFlag, modalTaskFlag }) => {
-  const [message, setMessage] = useState({
-    success: "successfully added",
-    warning: "error",
-  });
-
-  const notify = (msg) => toast.success(msg.success);
+const EditTask = ({ task, setUpdateFlag }) => {
   const navigate = useNavigate();
   const { taskDispatch, taskState } = useTask();
+  const { tasks, updateTask } = taskState;
+  const { title, tag, description, time, _id } = task;
+  const [editTask, setEditTask] = useState({ ...updateTask });
 
-  const [taskDetails, setTaskDetails] = useState({
-    _id: uuid(),
-    title: "",
-    tag: "",
-    description: "",
-    time: "",
-  });
-
-  const changeHandler = (event) => {
-    event.preventDefault();
-    taskDispatch({
-      type: ACTION_TYPE.SUMBIT_TASK,
-      payload: taskDetails,
-    });
-    notify(message);
-  };
-
-  const taskHandler = (event) => {
-    setTaskDetails({ ...taskDetails, [event.target.name]: event.target.value });
-  };
+  console.log("edittask", editTask);
   return (
     <>
       <div
@@ -53,32 +30,40 @@ const ModalTask = ({ setModalTaskFlag, modalTaskFlag }) => {
                 <form
                   onSubmit={(event) => {
                     event.preventDefault();
-                    changeHandler(event);
-                    setModalTaskFlag(false);
+                    setUpdateFlag(false);
+                    taskDispatch({
+                      type: ACTION_TYPE.UPDATE_TASK,
+                      payload: editTask,
+                    });
                   }}
                 >
                   <div className="my-2 ">
+                    <label>Edit Title</label>
                     <input
                       onChange={(e) => {
-                        taskHandler(e);
+                        setEditTask({ ...editTask, title: e.target.value });
                       }}
                       type="text"
                       required
                       name="title"
-                      value={taskDetails.title}
+                      value={editTask.title}
                       placeholder="Add Title"
                       className="bg-gray-100  w-full border-gray-300 py-3 px-2 "
                     />
                   </div>
                   <div className="my-2">
+                    <label>Edit Description</label>
                     <textarea
                       onChange={(e) => {
-                        taskHandler(e);
+                        setEditTask({
+                          ...editTask,
+                          description: e.target.value,
+                        });
                       }}
                       type="text"
                       required
                       name="description"
-                      value={taskDetails.description}
+                      value={editTask.description}
                       minLength="5"
                       placeholder="Add Description"
                       className="bg-gray-100 w-full border-gray-300 px-2 h-64 "
@@ -87,11 +72,11 @@ const ModalTask = ({ setModalTaskFlag, modalTaskFlag }) => {
                   <div className="my-2">
                     <select
                       onChange={(e) => {
-                        taskHandler(e);
+                        setEditTask({ ...editTask, tag: e.target.value });
                       }}
                       type="text"
                       required
-                      value={taskDetails.tag}
+                      value={editTask.tag}
                       placeholder="Add Title"
                       name="tag"
                       className="bg-gray-100 w-full border-gray-300 px-2 h-10 "
@@ -105,12 +90,13 @@ const ModalTask = ({ setModalTaskFlag, modalTaskFlag }) => {
                     </select>
                   </div>
                   <div className="my-2">
+                    <label>Enter Time</label>
                     <input
                       onChange={(e) => {
-                        taskHandler(e);
+                        setEditTask({ ...editTask, time: e.target.value });
                       }}
                       required
-                      value={taskDetails.time}
+                      value={editTask.time}
                       type="number"
                       min="5"
                       max="60"
@@ -125,15 +111,11 @@ const ModalTask = ({ setModalTaskFlag, modalTaskFlag }) => {
                       type="submit"
                       className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:ml-3 sm:w-auto sm:text-sm"
                     >
-                      Create Task
+                      update
                     </button>
-
                     <button
-                      onClick={(e) => {
-                        e.preventDefault();
-                        setModalTaskFlag(false);
-                      }}
-                      className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+                      type="submit"
+                      className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 text-gray-700 border-gray-300 text-base font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:ml-3 sm:w-auto sm:text-sm"
                     >
                       Cancel
                     </button>
@@ -147,4 +129,4 @@ const ModalTask = ({ setModalTaskFlag, modalTaskFlag }) => {
     </>
   );
 };
-export { ModalTask };
+export { EditTask };

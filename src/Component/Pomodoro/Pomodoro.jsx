@@ -37,14 +37,28 @@ const Pomodoro = () => {
         <section className="p-4 flex flex-col items-center my-10 justify-center ">
           <div className="h-72 w-72 bg-red-500 rounded-full border-8 flex flex-col justify-center ">
             <div className="flex justify-evenly items-center ">
-              <span className=" text-white font-bold text-3xl">
-                {minutes} m
-              </span>
+              {minutes ? (
+                <span className=" text-white font-bold text-3xl">
+                  {minutes} m
+                </span>
+              ) : (
+                <span className=" text-white font-bold text-3xl">00 m</span>
+              )}
               <span className=" text-white font-bold text-3xl">:</span>
-              <span className=" text-white font-bold text-3xl">{second} s</span>
+              {second ? (
+                <span className=" text-white font-bold text-3xl">
+                  {second} s
+                </span>
+              ) : (
+                <span className=" text-white font-bold text-3xl">00 s</span>
+              )}
             </div>
             <div className="mt-3">
-              <p className=" text-white  ">Out of {time} min</p>
+              {time ? (
+                <p className=" text-white  ">Out of {time} min</p>
+              ) : (
+                <p className=" text-white  ">Out of 00 min</p>
+              )}
             </div>
           </div>
           <div className="">
