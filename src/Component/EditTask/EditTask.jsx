@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { ACTION_TYPE } from "../../Reducer/util";
-import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import { useTask } from "../../Context/Task/Task-Context";
@@ -12,7 +11,6 @@ const EditTask = ({ task, setUpdateFlag }) => {
   const { title, tag, description, time, _id } = task;
   const [editTask, setEditTask] = useState({ ...updateTask });
 
-  console.log("edittask", editTask);
   return (
     <>
       <div

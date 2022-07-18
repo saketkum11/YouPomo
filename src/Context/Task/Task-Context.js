@@ -12,7 +12,6 @@ const TaskProvider = ({ children }) => {
     updateTask: [],
   };
   const [taskState, taskDispatch] = useReducer(taskReducer, initialState);
-  console.log("initials state", taskState);
 
   return (
     <TaskContext.Provider value={{ taskState, taskDispatch }}>

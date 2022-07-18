@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { usePomo } from "../../Context/Pomodoro/Pomodoro-Context";
@@ -25,7 +25,6 @@ const Tasks = () => {
     });
   };
 
-  const filterTask = () => {};
   return (
     <>
       <section className="grid col-start-1  border-8 p-4">
@@ -37,7 +36,7 @@ const Tasks = () => {
           {tags.map((tag) => {
             return (
               <button
-                onClick={filterTask}
+                onClick={() => filteredData(tasks, tag)}
                 key={tag}
                 className="mr-3 bg-gray-900 text-white px-3 py-1 rounded-2xl my-3"
               >

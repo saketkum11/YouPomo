@@ -9,4 +9,3 @@ export { ModalTask } from "../Component/ModalTask/ModalTask";
 export { Login } from "../Pages/Auth/Login";
 export { Signup } from "../Pages/Auth/Signup";
 export { taskReducer } from "../Reducer/taskReducer";
-export { Loader } from "../Component/Loader/Loader";

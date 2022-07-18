@@ -5,7 +5,6 @@ const usePomo = () => useContext(PomodoroContext);
 
 const PomodoroProvider = ({ children }) => {
   const [pomodoroDetails, setPomodoroDetails] = useState([]);
-  console.log("from pomodoro page", pomodoroDetails);
 
   return (
     <PomodoroContext.Provider value={{ pomodoroDetails, setPomodoroDetails }}>
