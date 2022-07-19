@@ -2,69 +2,50 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+URL - https://youpomo.netlify.app/
 
-In the project directory, you can run:
+Features 
+- create tasks 
+- update tasks
+- delete tasks
+- pomodoro clock
+- stop, pause and reset clock
 
-### `yarn start`
+Tools 
+- tailwind css 
+- react toastify 
+- font awesome
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+screens 
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `yarn test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Create Task Button and modal 
 
-### `yarn build`
+  ![image](https://user-images.githubusercontent.com/46194436/179670589-cce8d777-1022-4e17-bed6-93d2213cf657.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- DashBoard :- Tasks will be seen here.
+              
+![image](https://user-images.githubusercontent.com/46194436/179670740-3f3c82cb-b3fe-4316-9eaf-c8105f0aab3f.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- update Tasks :-  click edit button 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![image](https://user-images.githubusercontent.com/46194436/179671263-ae68a2d9-f28f-4588-abbe-13a35e611b5a.png)
 
-### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Pomodoro clock - click on the title name of task that you have created 
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![image](https://user-images.githubusercontent.com/46194436/179672030-f2d1f547-ea3f-4447-8791-cd1479ad7bca.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- STOP ,PAUSE and RESET CLOCK 
 
-## Learn More
+  Pause
+ ![image](https://user-images.githubusercontent.com/46194436/179672238-e5b69975-ab17-40bc-8d56-a6000d38e390.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+  Reset
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![image](https://user-images.githubusercontent.com/46194436/179672340-b4b097f1-ecc3-4951-adc1-027f37b18d6a.png)
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
