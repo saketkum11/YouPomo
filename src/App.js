@@ -1,12 +1,11 @@
 import "./App.css";
-import { Footer, Header, MyRoutes } from "./Pages";
+import { Header, MyRoutes } from "./Pages";
 
 function App() {
   return (
     <div className="App">
       <Header />
       <MyRoutes />
-      <Footer />
     </div>
   );
 }
