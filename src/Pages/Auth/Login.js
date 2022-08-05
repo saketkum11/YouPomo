@@ -1,6 +1,16 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-
+import { useAuth } from "../../Context/Auth/Auth-Context";
+import toast from "react-toastify";
 const Login = () => {
+  const { login } = useAuth();
+  const [userForm, setUserForm] = useState({
+    email: "",
+    password: "",
+  });
+  const handleLoginForm = (e) => {
+    setUserForm({ ...userForm, [e.target.name]: e.target.value });
+  };
   return (
     <>
       <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
@@ -10,7 +20,13 @@ const Login = () => {
               Sign in to your account
             </h2>
           </div>
-          <form className="mt-8 space-y-6" action="#" method="POST">
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              login(userForm);
+            }}
+            className="mt-8 space-y-6"
+          >
             <input type="hidden" name="remember" value="true" />
             <div className="rounded-md shadow-sm -space-y-px">
               <div>
@@ -18,6 +34,8 @@ const Login = () => {
                   Email address
                 </label>
                 <input
+                  onChange={(e) => handleLoginForm(e)}
+                  value={userForm.email}
                   id="email-address"
                   name="email"
                   type="email"
@@ -31,6 +49,8 @@ const Login = () => {
                   Password
                 </label>
                 <input
+                  onChange={(e) => handleLoginForm(e)}
+                  value={userForm.password}
                   id="password"
                   name="password"
                   type="password"
@@ -57,16 +77,6 @@ const Login = () => {
                   Remember me{" "}
                 </label>
               </div>
-
-              <div className="text-sm">
-                <Link
-                  to="#"
-                  className="font-medium text-indigo-600 hover:text-indigo-500"
-                >
-                  {" "}
-                  Forgot your password?{" "}
-                </Link>
-              </div>
             </div>
 
             <div>
@@ -91,6 +101,7 @@ const Login = () => {
                 </span>
                 Sign in
               </button>
+
               <Link
                 to="/signup"
                 className="border-gray-400 group relative w-full flex justify-center py-2 px-4 border  text-sm font-medium rounded-md text-black  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 "

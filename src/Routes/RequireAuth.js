@@ -1,0 +1,3 @@
+const RequireAuth = (children) => {
+  return;
+};
