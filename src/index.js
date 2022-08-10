@@ -6,17 +6,20 @@ import { makeServer } from "./server";
 import { BrowserRouter } from "react-router-dom";
 import { TaskProvider } from "./Context/Task/Task-Context";
 import { PomodoroProvider } from "./Context/Pomodoro/Pomodoro-Context";
+import { AuthProvider } from "./Context/Auth/Auth-Context";
 
 // Call make Server
 makeServer();
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <TaskProvider>
-        <PomodoroProvider>
-          <App />
-        </PomodoroProvider>
-      </TaskProvider>
+      <AuthProvider>
+        <TaskProvider>
+          <PomodoroProvider>
+            <App />
+          </PomodoroProvider>
+        </TaskProvider>
+      </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
