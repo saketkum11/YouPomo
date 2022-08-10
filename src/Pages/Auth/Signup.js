@@ -5,13 +5,14 @@ import { useAuth } from "../../Context/Auth/Auth-Context";
 const Signup = () => {
   const { signUp } = useAuth();
   const [userForm, setUserForm] = useState({
-    firstName: "",
-    lastName: "",
     email: "",
     password: "",
   });
   const handleSignUpForm = (e) => {
     setUserForm({ ...userForm, [e.target.name]: e.target.value });
+  };
+  const handleForm = () => {
+    signUp(userForm.email, userForm.password);
   };
   return (
     <>
@@ -25,42 +26,11 @@ const Signup = () => {
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              signUp(userForm);
+              handleForm();
             }}
             className="mt-8 space-y-6"
           >
-            <input type="hidden" name="remember" value="true" />
             <div className="rounded-md shadow-sm -space-y-px">
-              <div>
-                <label htmlFor="firstName" className="sr-only">
-                  FirstName
-                </label>
-                <input
-                  onChange={(e) => handleSignUpForm(e)}
-                  id="firstName"
-                  name="firstName"
-                  type="text"
-                  required
-                  value={userForm.firstName}
-                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                  placeholder="First Name"
-                />
-              </div>
-              <div>
-                <label htmlFor="lastName" className="sr-only">
-                  LastName
-                </label>
-                <input
-                  onChange={(e) => handleSignUpForm(e)}
-                  value={userForm.lastName}
-                  id="lastName"
-                  name="lastName"
-                  type="text"
-                  required
-                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                  placeholder="Last Name"
-                />
-              </div>
               <div>
                 <label htmlFor="email" className="sr-only">
                   Email
